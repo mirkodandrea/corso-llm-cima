@@ -1,3 +1,4 @@
 {
-    "python.defaultInterpreterPath": "/Users/mirko/dev/llms/corso-llm-cima/day1/.venv/bin/python"
+    "python.defaultInterpreterPath": "/Users/mirko/dev/llms/corso-llm-cima/day1/.venv/bin/python",
+    "python.analysis.typeCheckingMode": "basic"
 }
