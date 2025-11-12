@@ -45,6 +45,7 @@ A partire dall’esercizio 3 realizzare un sistema che valuti la bontà delle ri
 
 
 ## Esercizio 5 Bot Indovina CIMA
+
 Realizza un bot che giochi ad indovina chi usando le immagini presenti nella cartella `images/`.
 - Carica le immagini dalla cartella `images/`.
 - Per ogni immagine, chiedi al modello di generare una descrizione ed un json con le caratteristiche salienti (es. colore dei capelli, occhiali, cappello)
