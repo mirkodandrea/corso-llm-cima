@@ -2,7 +2,8 @@
 
 Obiettivo generale: Prendere confidenza con l’uso programmatico dell’API OpenAI attraverso una serie di esercizi progressivi.
 
-Provate ad utilizzare i vari modelli per i diversi task, variando parametri come temperatura, max tokens, top_p, ecc. per osservare come questi influenzano i risultati e trovare le soluzioni più adatte ai diversi compiti.
+Provate ad utilizzare i diversi modelli a disposizione ed i concetti appresi oggi!
+
 
 ## Esercizio 1 – Riassunti in batch
 
@@ -41,3 +42,12 @@ A partire dall’esercizio 3 realizzare un sistema che valuti la bontà delle ri
 - Analizzi la risposta generata e i riferimenti utilizzati.
 - Indichi se il modello ha introdotto informazioni non presenti nei testi di partenza.
 - Fornisca un punteggio di affidabilità della risposta (es. da 1 a 10) ed evidenzi eventuali parti allucinate.
+
+
+## Esercizio 5 Bot Indovina CIMA
+Realizza un bot che giochi ad indovina chi usando le immagini presenti nella cartella `images/`.
+- Carica le immagini dalla cartella `images/`.
+- Per ogni immagine, chiedi al modello di generare una descrizione ed un json con le caratteristiche salienti (es. colore dei capelli, occhiali, cappello)
+- Implementa un loop di gioco in cui l’utente può fare domande sulle caratteristiche delle immagini per cercare di indovinare quale immagine il bot ha scelto.
+- Il bot deve rispondere alle domande basandosi sulle descrizioni e caratteristiche generate in precedenza.
+Buon divertimento!

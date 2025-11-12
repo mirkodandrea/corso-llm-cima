@@ -35,3 +35,5 @@ print("Risposta completa ottenuta dalla chiamata API:")
 print(response.model_dump_json(indent=2))
 
 
+
+# %%

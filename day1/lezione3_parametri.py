@@ -39,6 +39,21 @@ print(f"{QUERY}")
 print("\nRisposta con max_tokens=12:")
 print(response.choices[0].message.content)
 
+
 # attenzione! Le risposte verranno tagliate indipendentemente dal fatto che la frase sia completa o meno.
 # è necessario quindi dare delle istruzioni chiare sulla lunghezza della risposta desiderata.
 # Ad esempio, si può chiedere esplicitamente di rispondere in un certo numero di parole o frasi.
+# %%
+QUERY = "Descrivi in modo dettagliato cosa fa un computer."
+response = client.chat.completions.create(
+    model="gemma3:12b",
+    messages=[{"role": "user", "content": QUERY}],
+    max_tokens=12
+)
+print('------------------------------')
+print(f"{QUERY}")
+print("\nRisposta con max_tokens=12:")
+print(response.choices[0].message.content)
+
+
+# %%
