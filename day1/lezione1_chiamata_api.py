@@ -1,4 +1,5 @@
 #%%
+import json
 from openai import OpenAI
 
 # Configura il client con l'API key e l'URL di base
@@ -20,14 +21,17 @@ for m in models.data:
 # Crea una chat completion con un prompt specifico
 model = "gemma3:4b"  # Scegli il modello tra quelli disponibili
 
-print("\nEsempio di chiamata API per creare una chat completion usando il modello {model}:\n")
+print(f"\nEsempio di chiamata API per creare una chat completion usando il modello {model}:\n")
 
 response = client.chat.completions.create(
     model=model,
     messages=[
-    {"role": "system", "content": "Sei un assistente che parla solo in rima."}, # system prompt che condiziona il comportamento del modello
+    {"role": "system", "content": "Sei un assistente che parla solo in rima e risponde brevemente."}, # system prompt che condiziona il comportamento del modello
     {"role": "user", "content": "Ciao, come stai?"}                             # user prompt con la domanda dell'utente
 ])
 
+print("Risposta completa ottenuta dalla chiamata API:")
 # Estrai e stampa il contenuto della prima (ed unica) risposta
-print(response.choices[0].message.content)
+print(response.model_dump_json(indent=2))
+
+
