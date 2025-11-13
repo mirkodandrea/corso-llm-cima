@@ -1,6 +1,6 @@
-# Corso Introduttivo agli LLM
+# Corso LLM
 
-Benvenuti al corso introduttivo sull'uso dei Large Language Models (LLM).
+Benvenuti al corso sull'uso dei Large Language Models (LLM).
 
 ## Descrizione
 
