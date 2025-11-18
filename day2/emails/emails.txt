@@ -1,0 +1,120 @@
+Si segnala il malfunzionamento del sensore in oggetto su mappa di pioggia.
+Si prega voler eliminare temporaneamente il pluviometro in oggetto.
+
+------
+
+Buon pomeriggio,
+come preannunciato telefonicamente alle ore 14.09 è stata fatta una pubblicazione del BC che non è andata a buon fine per la comparsa di un pop up con indicato "Impossibile pubblicare il CAP" di conseguenza non avendo avuto certa di pubblicazione la procedura è stata riproposta alle ore 14.16 ed ovviamente il BC risulta "aggiornato".
+Per tanto chiediamo la possibilità di annullare le pubblicazioni precedenti per permettere la pubblicazione senza la dicitura "aggiornato".
+Si rimane in attesa di cortese riscontro.
+
+------
+
+Buongiorno,
+da un veloce controllo di alcuni prodotti di uso quotidiano presso questo CFC, abbiamo notato che questi non sono disponibili. Nello specifico è stata tentata la visualizzazione di: Mappa di Pioggia, Rete Radar-VMI e l'applicativo Report - Dewetra.
+Il "malfunzionamento" è stato verificato su diversi PC.
+Rimaniamo in attesa di un vostro cortese riscontro.
+
+------
+
+Buon pomeriggio,
+oggi l'applicativo webalert di Dewetra ha creato 2 file pdf del BC con la stessa data e ora (vedi scrennshot). Questo probabilmente ha reso non apribile il pdf inserito nel file zip del bollettino. Abbiamo risolto sovrascrivendolo con il secondo file pdf disponibile nella sezione messaggi di webalert.
+Rimaniamo in attesa di un cortese riscontro.
+
+------
+
+Buongiorno,
+come informato telefonicamente, segnalo che il run del modello per SPIRL è aggiornato al 4/11.
+Sarà dovuto al disservizio di ieri, ma vorrei sapere se è possibile avere l’aggiornamento a oggi entro le 12.
+Attendo cortese riscontro.
+ 
+Ringrazio e saluto
+
+------
+
+Gentilissimi, buona domenica!
+
+Vi contattiamo per segnalarvi una problematica riscontrata da diverse settimane sulla piattaforma DEWETRA, riguardante il mancato caricamento di diversi layer del gruppo Umidità del suolo. Si tratta di prodotti che, per il Centro Funzionale Decentrato della Regione Sardegna, rivestono un ruolo rilevante nell’attività quotidiana di analisi e redazione del bollettino regionale di criticità. In particolare, risultano attualmente non accessibili i seguenti layer: 
+
+ASCAT_SWI (HSAF)
+
+API-15
+
+API-30
+
+Vi saremmo molto grati se poteste verificare l’origine del disservizio o indicarci eventuali aggiornamenti o modifiche pianificate.
+
+Colgo inoltre l’occasione per chiedere, se possibile, qualche informazione tecnico-scientifica aggiuntiva sul prodotto Soil Moisture (FP Italia), con particolare riferimento alla metodologia di generazione del dato; risoluzione spaziale e temporale; fonti modellistiche e/o satellitari utilizzate; indicazioni operative per una corretta interpretazione.
+Vi ringraziamo fin d’ora per il supporto e restiamo a disposizione per eventuali approfondimenti.
+Un caro saluto e buon lavoro,
+
+------
+
+buonasera,
+
+come riportato per le vie brevi, si riscontrano problemi sulla funzionalità del prodotto DEWETRA reporter.
+nel tab situazione pregressa, una volta selezionato il valore temporale delle cumulate desiderate (3/6/.... ore) il sistema dopo il tempo di attesa non restituisce alcun valore.
+
+restiamo in attesa di un cortese riscontro.
+
+------
+
+Buongiorno,
+
+si segnala che non appaiono a video i dati relativi alla Regione Toscana.
+si resta in attesa di un cortese cenno di riscontro.
+
+------
+
+Buongiorno, 
+
+si segnala il persistere del malfunzionamento del tool in oggetto, come di seguito indicato:
+
+WARNINGS PLUVIOMETRI
+
+Raggruppamento dati per:
+
+Regioni, NON FUNZIONA
+Province, NON FUNZIONA
+Comuni, NON FUNZIONA
+Bacini, NON FUNZIONA - raggruppa ma non restituisce dati
+Nessuna, FUNZIONA
+Comuni (topoieti), NON FUNZIONA
+
+------
+
+Buongiorno,
+
+si riportano le seguenti variazioni alla sensoristica e alle stazioni della rete
+OMIRL:
+
+1. sono state aggiunte le stazioni presso le località Carasco e Ventimiglia di cui alleghiamo le informazioni anagrafiche.
+
+2. Sono stati codificati i seguenti sensori relativi alle due stazioni di cui sopra:
+
+95244 CARPB	CRLVM
+95245 XXMPA	CRLVM
+
+dove le misure sono:
+
+CRLVM = Livello Idrometrico
+
+e i codici stazioni sono:
+
+CARPB = Carasco - Ponte Birago
+XXMPA = Ventimiglia - Ponte Aniante
+
+3. Si segnala la dismissione delle stazioni di Carasco (codice CARAS) e Pontremoli Santa Giustina (MAGSG)
+
+4. Si segnala lo spegnimento dei seguenti sensori:
+
+95046 	BOACM	PRSTM
+
+Al momento la stazione "Carasco - Ponte Birago" non dispone ancora di soglie idrometriche, che saranno caricate non appena disponibili su MyDewetra.
+
+Cordiali saluti,
+
+-----
+
+In esclusiva 2 mesi gratis per clienti Amazon Prime
+Goditi esperienze audio illimitate ogni mese e ascolta tutti i podcast originali Audible che vuoi.
