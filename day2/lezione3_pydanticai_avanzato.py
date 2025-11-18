@@ -28,6 +28,20 @@ class EventLog(BaseModel):
     appropriato: bool
     priorita: Literal['bassa', 'media', 'alta']
     dettagli: str
+    email_utente_inviata: bool = False
+    support_team_notificato: bool = False
+
+    def __str__(self) -> str:
+        return f"""
+Log evento:
+    evento: {self.evento}
+    tipo_problema: {self.tipo_problema}
+    appropriato: {self.appropriato}
+    priorita: {self.priorita}
+    dettagli: {self.dettagli}
+    email_utente_inviata: {self.email_utente_inviata}
+    support_team_notificato: {self.support_team_notificato}
+"""
 
 # ora definiamo un agente che riceve le email, richiede il triage e risponde all'utente
 email_agent = Agent(
@@ -64,10 +78,10 @@ def send_confirmation_email(ticket: SupportTicket) -> None:
 
 # definiamo anche un tool per inviare la mail al supporto tecnico interno
 @email_agent.tool_plain()
-def notify_support_team(ticket: SupportTicket, original_email_text: str) -> None:
+def notify_support_team(ticket: SupportTicket) -> None:
     """Invia una email per notificare il team di supporto tecnico."""
     # in un caso reale qui invieremmo una notifica al team di supporto, per ora simuliamo l'invio
-    notification_message = f"Nuovo ticket di supporto creato:\nTipo: {ticket.tipo_problema}\nDescrizione: {ticket.descrizione}\nPriorità: {ticket.priorita}\nEmail originale: {original_email_text}"
+    notification_message = f"Nuovo ticket di supporto creato:\nTipo: {ticket.tipo_problema}\nDescrizione: {ticket.descrizione}\nPriorità: {ticket.priorita}"
     print(f"""
 ################### Notifica inviata al team di supporto ###################
 {notification_message}
@@ -87,18 +101,35 @@ def send_ignore_email() -> None:
 
 
 
-# carica le email di supporto da un file txt con separatore '-----'
-with open("emails/emails.txt", "r") as f:
-    email_texts = f.read().split("-----")
+pertinent_email_text = """
+Gentilissimi, buona domenica!
 
-# elaboriamo ogni email
-for idx, email_text in enumerate(email_texts[-1:]):
-    email_text = email_text.strip()
-    if not email_text:
-        continue
-    print(f"\n=== Elaborazione email {idx+1} ===")
-    print(f" <<<<< Email:\n{email_text}\n")
-    # Eseguiamo l'agente per ogni email
-    result = email_agent.run_sync(email_text)
-    print(f"\n >>>> Risultato finale per email {idx+1}")
-    print(f"{result.output}")  # Stampa la risposta dell'agente
+Vi contattiamo per segnalarvi una problematica riscontrata da diverse settimane sulla piattaforma DEWETRA, riguardante il mancato caricamento di diversi layer del gruppo Umidità del suolo. Si tratta di prodotti che, per il Centro Funzionale Decentrato della Regione Sardegna, rivestono un ruolo rilevante nell’attività quotidiana di analisi e redazione del bollettino regionale di criticità. In particolare, risultano attualmente non accessibili i seguenti layer: 
+
+ASCAT_SWI (HSAF)
+
+API-15
+
+API-30
+
+Vi saremmo molto grati se poteste verificare l’origine del disservizio o indicarci eventuali aggiornamenti o modifiche pianificate.
+
+Colgo inoltre l’occasione per chiedere, se possibile, qualche informazione tecnico-scientifica aggiuntiva sul prodotto Soil Moisture (FP Italia), con particolare riferimento alla metodologia di generazione del dato; risoluzione spaziale e temporale; fonti modellistiche e/o satellitari utilizzate; indicazioni operative per una corretta interpretazione.
+Vi ringraziamo fin d’ora per il supporto e restiamo a disposizione per eventuali approfondimenti.
+Un caro saluto e buon lavoro
+"""
+result = email_agent.run_sync(pertinent_email_text)
+print(result.output)
+
+
+not_pertinent_email_text = """
+Buongiorno,
+Vi scrivo per segnalare un problema che sto riscontrando con la mia connessione internet. Da qualche giorno, la velocità di navigazione è notevolmente rallentata e spesso la connessione si interrompe senza motivo apparente. Ho già provato a riavviare il modem e a controllare i cavi, ma il problema persiste.
+Vi chiedo gentilmente di verificare la situazione e di fornirmi assistenza per risolvere questo inconveniente.
+In attesa di un vostro riscontro, vi ringrazio anticipatamente per l'attenzione.
+Cordiali saluti,
+Mario Rossi
+"""
+
+result = email_agent.run_sync(not_pertinent_email_text)
+print(result.output)
