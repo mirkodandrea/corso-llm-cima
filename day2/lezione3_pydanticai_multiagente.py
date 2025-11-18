@@ -2,7 +2,7 @@ from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.ollama import OllamaProvider
 from pydantic import BaseModel
-from typing import Literal
+from typing import Literal, Annotated
 
 # Definiamo il modello di chat utilizzando il provider Ollama
 ollama_model = OpenAIChatModel(
@@ -11,25 +11,25 @@ ollama_model = OpenAIChatModel(
 )
 
 class SupportTicket(BaseModel):
-    tipo_problema: str
-    descrizione: str
-    priorita: Literal['bassa', 'media', 'alta']
+    tipo_problema: Annotated[str, "Il tipo di problema riscontrato dall'utente."]
+    descrizione: Annotated[str, "La descrizione dettagliata del problema."]
+    priorita: Annotated[Literal['bassa', 'media', 'alta'], "La priorità del ticket di supporto."]
 
 # Creiamo un agente per il triage dei ticket di supporto
 triage_agent = Agent(
     model=ollama_model, 
     system_prompt="Sei un assistente che legge una email di supporto tecnico e produce un ticket strutturato.", 
-    output_type=SupportTicket                                                                                                                       # Specifichiamo il modello di output per questo agente
+    output_type=SupportTicket # Specifichiamo il modello di output per questo agente
 )
 
 class EventLog(BaseModel):
-    evento: str
-    tipo_problema: str
-    appropriato: bool
-    priorita: Literal['bassa', 'media', 'alta']
-    dettagli: str
-    email_utente_inviata: bool = False
-    support_team_notificato: bool = False
+    tipo_problema: Annotated[str, "Il tipo di problema riscontrato dall'utente."]
+    appropriato: Annotated[bool, "Indica se la richiesta è pertinente ai servizi offerti."]
+    priorita: Annotated[Literal['bassa', 'media', 'alta'], "La priorità assegnata alla richiesta."]
+    evento: Annotated[str, "Descrizione sintetica dell'evento."]
+    dettagli: Annotated[str, "Dettagli aggiuntivi sull'evento."]
+    email_utente_inviata: Annotated[bool, "Indica se è stata inviata un'email all'utente."] = False
+    support_team_notificato: Annotated[bool, "Indica se il team di supporto è stato notificato."] = False
 
     def __str__(self) -> str:
         return f"""
@@ -69,7 +69,10 @@ def triage_support_email(email_text: str) -> SupportTicket:
 def send_confirmation_email(ticket: SupportTicket) -> None:
     """Invia una email di conferma all'utente."""  
     # in un caso reale qui invieremmo l'email, per ora simuliamo l'invio
-    confirmation_message = f"Ciao,\n\nAbbiamo ricevuto la tua richiesta di supporto riguardo '{ticket.tipo_problema}'. Il tuo ticket è stato creato con priorità '{ticket.priorita}'. Ti risponderemo al più presto.\n\nGrazie!"
+    confirmation_message = f"""Ciao,\n\nAbbiamo ricevuto la tua richiesta di supporto riguardo 
+    '{ticket.tipo_problema}'. 
+    Il tuo ticket è stato creato con priorità '{ticket.priorita}'. 
+    Ti risponderemo al più presto.\n\nGrazie!"""
     # simuliamo l'invio stampando il messaggio
     print(f"""
 ################### Email di conferma inviata all'utente ###################
@@ -81,7 +84,10 @@ def send_confirmation_email(ticket: SupportTicket) -> None:
 def notify_support_team(ticket: SupportTicket) -> None:
     """Invia una email per notificare il team di supporto tecnico."""
     # in un caso reale qui invieremmo una notifica al team di supporto, per ora simuliamo l'invio
-    notification_message = f"Nuovo ticket di supporto creato:\nTipo: {ticket.tipo_problema}\nDescrizione: {ticket.descrizione}\nPriorità: {ticket.priorita}"
+    notification_message = f"""Nuovo ticket di supporto creato:
+Tipo: {ticket.tipo_problema}
+Descrizione: {ticket.descrizione}
+Priorità: {ticket.priorita}"""
     print(f"""
 ################### Notifica inviata al team di supporto ###################
 {notification_message}
@@ -92,7 +98,11 @@ def notify_support_team(ticket: SupportTicket) -> None:
 def send_ignore_email() -> None:
     """Invia una email di risposta per ignorare la richiesta non pertinente."""  
     # in un caso reale qui invieremmo l'email, per ora simuliamo l'invio
-    ignore_message = f"Ciao,\n\nGrazie per averci contattato. Tuttavia, la tua richiesta non riguarda i nostri servizi di supporto tecnico per applicativi webgis e dati geografici/meteorologici. Ti consigliamo di rivolgerti al servizio appropriato.\n\nGrazie!"
+    ignore_message = """Ciao,
+Grazie per averci contattato. 
+Tuttavia, la tua richiesta non riguarda i nostri servizi di supporto tecnico. 
+Ti consigliamo di rivolgerti al servizio appropriato.
+Grazie!"""
     # simuliamo l'invio stampando il messaggio
     print(f"""
 ################### Email di risposta per richiesta ignorata ###################
