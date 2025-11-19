@@ -54,3 +54,29 @@ for idx, message in enumerate(result.all_messages()):
             print(f"\t - {part.part_kind}: {part.content}")     
 
 
+# se vogliamo continuare la conversazione con l'agente, mantenendo il contesto,
+# possiamo usare "run_sync" passando come parametro message_history
+FOLLOW_UP_PROMPT = "Per somma 42 al risultato precedente."
+print("\n=== Prompt di follow-up ===")
+print(f"{FOLLOW_UP_PROMPT}")
+follow_up_result = agent.run_sync(
+    FOLLOW_UP_PROMPT,
+    message_history=result.all_messages()  # passiamo lo storico dei messaggi per mantenere il contesto
+)
+
+print("\n=== Risultato follow-up ===")
+print(f"{follow_up_result.output}")  # Stampa la risposta dell'agente
+
+# follow_up_result contiene anche "new_messages" con i messaggi generati nella ultima run
+print("\n=== Dettagli esecuzione follow-up ===")
+# stampiamo quanti token sono stati usati
+print(f"{follow_up_result.usage()}")
+# stampiamo il log delle azioni dell'agente
+print("\n=== Log delle azioni dell'agente (follow-up) ===")
+for idx, message in enumerate(follow_up_result.new_messages()):
+    print(f"\nSeconda run: Messaggio {idx}. Tipo: {message.kind}")
+    for part in message.parts:
+        if part.part_kind == "tool-call" or part.part_kind == "builtin-tool-call":
+            print(f"\t - {part.part_kind}: args: {part.args}")
+        else:
+            print(f"\t - {part.part_kind}: {part.content}")
